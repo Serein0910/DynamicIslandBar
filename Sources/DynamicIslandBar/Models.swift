@@ -13,6 +13,14 @@ struct MenuBarItem: Identifiable, Hashable {
     let icon: NSImage?
     /// If available, the AXUIElement reference
     let axElement: Any?
+
+    static func == (lhs: MenuBarItem, rhs: MenuBarItem) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }
 
 // MARK: - Staged File

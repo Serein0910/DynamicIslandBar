@@ -28,11 +28,11 @@ struct FileTrayView: View {
 
     private var emptyDropZone: some View {
         RoundedRectangle(cornerRadius: 12, style: .continuous)
-            .fill(isDragOver ? Color.accentColor.opacity(0.12) : .quaternary.opacity(0.25))
+            .fill(isDragOver ? AnyShapeStyle(Color.accentColor.opacity(0.12)) : AnyShapeStyle(.quaternary.opacity(0.25)))
             .overlay(
                 RoundedRectangle(cornerRadius: 12, style: .continuous)
                     .stroke(
-                        isDragOver ? Color.accentColor : .quaternary,
+                        isDragOver ? AnyShapeStyle(Color.accentColor) : AnyShapeStyle(.quaternary),
                         style: StrokeStyle(lineWidth: 1.5, dash: [6, 4])
                     )
             )
@@ -41,7 +41,7 @@ struct FileTrayView: View {
                 VStack(spacing: 4) {
                     Image(systemName: "arrow.down.doc.fill")
                         .font(.title3)
-                        .foregroundStyle(isDragOver ? .accentColor : .secondary)
+                        .foregroundStyle(isDragOver ? AnyShapeStyle(Color.accentColor) : AnyShapeStyle(.secondary))
                     Text(isDragOver ? "Drop to stage" : "Drag files here")
                         .font(.caption)
                         .foregroundStyle(.secondary)
